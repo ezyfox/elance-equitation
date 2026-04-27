@@ -509,9 +509,9 @@
             .nav-links.open { display: flex; }
             .nav-links a { font-size: 1.1rem; }
             .hamburger { display: flex; }
-            .countdown { gap: 0.8rem; flex-wrap: wrap; }
-            .countdown-item { min-width: 60px; padding: 0.6rem 0.8rem; }
-            .countdown-number { font-size: 1.8rem; }
+            .countdown { gap: 0.6rem; display: grid; grid-template-columns: repeat(2, auto); justify-content: center; }
+            .countdown-item { min-width: 90px; padding: 0.7rem 1rem; text-align: center; }
+            .countdown-number { font-size: 2rem; }
             .evenement-grid, .programme-grid, .infos-grid { grid-template-columns: 1fr; }
             .experience-items { grid-template-columns: 1fr; }
             .photo-mosaic { grid-template-rows: 180px 180px 180px; grid-template-columns: 1fr; }
@@ -525,7 +525,9 @@
 
         @media (max-width: 480px) {
             .hero-badge { font-size: 0.6rem; }
-            .countdown-number { font-size: 1.5rem; }
+            .countdown { grid-template-columns: repeat(2, auto); gap: 0.5rem; }
+            .countdown-item { min-width: 80px; padding: 0.6rem 0.8rem; }
+            .countdown-number { font-size: 1.7rem; }
             .epreuve-height { font-size: 1.3rem; }
             .hero-logo-img { width: clamp(180px, 65vw, 260px); }
         }
