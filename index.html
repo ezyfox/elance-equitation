@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elance — Concours de Saut d'Obstacles sur Herbe</title>
+    <meta name="description" content="Premier concours de saut d'obstacles sur herbe en Normandie. 30 & 31 mai 2026, Ferme de la Motte, Val de Reuil. CSO de 80 au Derby 130.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Elance — CSO sur Herbe en Normandie">
+    <meta property="og:description" content="30 & 31 mai 2026 • Ferme de la Motte, Val de Reuil • De 80 au Derby 130">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --navy: #002B64;
+            --navy-light: #003d8a;
+            --coral: #F24535;
+            --coral-light: #ff6b5e;
+            --dark: #2D2D2D;
+            --pale-pink: #FFEFED;
+            --white: #FFFFFF;
+            --font-title: 'Montserrat', Arial, sans-serif;
+            --font-body: 'Montserrat', Arial, sans-serif;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-body);
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        img { max-width: 100%; height: auto; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== NAV ===================== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+        }
+        .nav.scrolled {
+            background: var(--navy);
+            padding: 0.6rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+        .nav-logo { display: flex; align-items: center; }
+        .nav-logo-img {
+            height: 40px; width: auto;
+            transition: height 0.4s;
+        }
+        .nav.scrolled .nav-logo-img { height: 32px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--white); font-size: 0.85rem; font-weight: 500;
+            letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; transition: opacity 0.3s;
+        }
+        .nav-links a:hover { opacity: 1; }
+        .nav-cta {
+            background: var(--coral); color: var(--white) !important;
+            padding: 0.5rem 1.2rem; border-radius: 4px; opacity: 1 !important;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(242,69,53,0.4); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .hamburger span { width: 28px; height: 2px; background: var(--white); transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            position: relative; height: 100vh; min-height: 650px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); overflow: hidden;
+        }
+
+        /* Hero background image */
+        .hero-bg-img {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0;
+            background: url('ressources/photos/hero-saut-arcenciel.png') center center / cover no-repeat;
+        }
+        .hero-bg-img::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,43,100,0.70) 0%,
+                rgba(0,43,100,0.55) 40%,
+                rgba(0,43,100,0.70) 100%
+            );
+        }
+
+        /* Hero logo */
+        .hero-logo-img {
+            width: clamp(260px, 40vw, 420px);
+            height: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 30px rgba(242,69,53,0.15));
+            animation: logoFadeIn 1.2s ease-out;
+        }
+        @keyframes logoFadeIn {
+            0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero-content {
+            position: relative; z-index: 1; max-width: 800px; padding: 0 2rem;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block; background: var(--coral); color: var(--white);
+            padding: 0.35rem 1.2rem; border-radius: 50px;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 1.5rem; animation: pulseGlow 3s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(242,69,53,0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(242,69,53,0.2); }
+        }
+
+        /* Hidden h1 for SEO — logo replaces visual title */
+        .hero-h1-sr {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem; font-weight: 300; margin-bottom: 0.3rem; opacity: 0.9;
+        }
+        .hero-location {
+            font-size: 0.9rem; opacity: 0.5; margin-bottom: 2.5rem; letter-spacing: 2px;
+        }
+
+        /* Countdown */
+        .countdown { display: flex; gap: 1.2rem; justify-content: center; margin-bottom: 2.5rem; }
+        .countdown-item {
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px; padding: 0.8rem 1rem; min-width: 70px;
+            backdrop-filter: blur(5px);
+        }
+        .countdown-number {
+            font-family: var(--font-title); font-size: 2.4rem; font-weight: 700;
+            line-height: 1; display: block; color: var(--white);
+        }
+        .countdown-label {
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
+            opacity: 0.5; margin-top: 0.3rem;
+        }
+
+        .hero-btn {
+            display: inline-block; background: var(--coral); color: var(--white);
+            padding: 1rem 2.5rem; font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 3px; text-transform: uppercase;
+            border: none; border-radius: 4px; cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(242,69,53,0.4); }
+
+        .scroll-indicator {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            z-index: 1; animation: bounce 2s infinite;
+        }
+        .scroll-indicator span {
+            display: block; width: 24px; height: 24px;
+            border-right: 2px solid rgba(255,255,255,0.4);
+            border-bottom: 2px solid rgba(255,255,255,0.4);
+            transform: rotate(45deg);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Grass wave bottom of hero */
+        .hero-grass {
+            position: absolute; bottom: -1px; left: 0; width: 100%; z-index: 2; height: 50px;
+            display: block;
+        }
+
+        /* ===================== SECTIONS GENERAL ===================== */
+        .section { padding: 6rem 2rem; position: relative; }
+        .section-inner { max-width: 900px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--coral); font-weight: 600; margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--font-title); font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700; color: var(--navy); margin-bottom: 2rem; line-height: 1.25;
+        }
+        .section-text { font-size: 1.05rem; line-height: 1.9; color: #555; font-weight: 300; }
+        .section-text strong { color: var(--dark); font-weight: 600; }
+
+        .fade-in {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===================== HISTOIRE ===================== */
+        .histoire { background: var(--white); }
+        .histoire .section-text p { margin-bottom: 1.5rem; }
+
+        .histoire-quote {
+            margin-top: 3rem; padding: 2.5rem; border-left: 4px solid var(--coral);
+            background: var(--pale-pink); border-radius: 0 12px 12px 0;
+            position: relative;
+        }
+        .histoire-quote::before {
+            content: '\201C'; position: absolute; top: -10px; left: 16px;
+            font-size: 4rem; color: var(--coral); opacity: 0.3; font-family: Georgia, serif; line-height: 1;
+        }
+        .histoire-quote blockquote {
+            font-family: var(--font-title); font-size: 1.15rem; font-weight: 600;
+            color: var(--navy); line-height: 1.6; font-style: italic;
+        }
+        .histoire-quote cite {
+            display: block; margin-top: 1rem; font-style: normal;
+            font-size: 0.85rem; color: var(--coral); font-weight: 600;
+        }
+
+        /* ===================== ÉVÉNEMENT ===================== */
+        .evenement { background: var(--pale-pink); overflow: hidden; }
+        .evenement .section-title { color: var(--navy); }
+
+        .evenement-intro { font-size: 1.05rem; line-height: 1.9; color: #555; font-weight: 300; }
+        .evenement-intro strong { color: var(--dark); font-weight: 600; }
+
+        .evenement-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem;
+        }
+        .evenement-card {
+            background: var(--white); border-radius: 12px; padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,43,100,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        .evenement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,43,100,0.1);
+            border-bottom-color: var(--coral);
+        }
+
+        .card-icon-wrap {
+            width: 50px; height: 50px; border-radius: 12px;
+            background: var(--pale-pink); display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .evenement-card h3 {
+            font-family: var(--font-title); font-size: 1.05rem; font-weight: 700;
+            margin-bottom: 0.5rem; color: var(--navy);
+        }
+        .evenement-card p { font-size: 0.9rem; line-height: 1.6; color: #666; }
+
+        /* Photo mosaic */
+        .photo-mosaic {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 200px 200px;
+            gap: 10px;
+            margin-top: 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .photo-mosaic .mosaic-img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .photo-mosaic .mosaic-cell {
+            overflow: hidden; border-radius: 8px; position: relative;
+        }
+        .photo-mosaic .mosaic-cell:hover .mosaic-img {
+            transform: scale(1.05);
+        }
+        .photo-mosaic .mosaic-cell:first-child {
+            grid-row: 1 / 3;
+        }
+
+        /* ===================== PROGRAMME ===================== */
+        .programme { background: var(--white); }
+
+        .programme-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 3rem;
+        }
+        .programme-day {
+            background: var(--pale-pink); border-radius: 12px; padding: 2.5rem;
+            position: relative; overflow: hidden;
+        }
+        .programme-day::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--navy));
+        }
+
+        .programme-day-title {
+            font-family: var(--font-title); font-size: 1.3rem; font-weight: 700;
+            color: var(--navy); margin-bottom: 0.3rem;
+        }
+        .programme-day-date {
+            font-size: 0.8rem; color: var(--coral); font-weight: 600;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+
+        .epreuve {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.75rem 0; border-bottom: 1px solid rgba(0,43,100,0.08);
+        }
+        .epreuve:last-child { border-bottom: none; }
+        .epreuve-height {
+            font-family: var(--font-title); font-size: 1.6rem; font-weight: 700;
+            color: var(--navy); min-width: 50px;
+        }
+        .epreuve-type { font-size: 0.85rem; color: #888; font-weight: 400; }
+        .epreuve-info {
+            text-align: right; min-width: 140px;
+        }
+        .epreuve-dotation {
+            font-size: 0.85rem; font-weight: 600; color: var(--coral);
+        }
+        .epreuve-engagement {
+            font-size: 0.72rem; color: #999; font-weight: 400;
+        }
+
+        .programme-extras {
+            text-align: center; margin-top: 2.5rem; padding: 1.5rem;
+            background: var(--pale-pink); border-radius: 12px;
+        }
+        .programme-extras p { font-size: 1rem; color: var(--navy); font-weight: 500; }
+        .programme-extras span { color: var(--coral); font-weight: 600; }
+
+        .btn-inscrire {
+            display: inline-block; margin-top: 2.5rem; background: var(--coral); color: var(--white);
+            padding: 1rem 2.5rem; font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 3px; text-transform: uppercase; border-radius: 4px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-inscrire:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(242,69,53,0.4); }
+        .btn-inscrire.disabled { background: #aaa; cursor: default; pointer-events: none; }
+        .inscription-note { font-size: 0.8rem; color: #888; margin-top: 0.8rem; }
+
+        /* ===================== EXPÉRIENCE ===================== */
+        .experience { background: var(--pale-pink); overflow: hidden; }
+
+        .experience-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
+
+        .experience-item {
+            text-align: center; padding: 2.5rem 1.5rem; border-radius: 12px;
+            background: var(--white); transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        .experience-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,43,100,0.08);
+            border-bottom-color: var(--coral);
+        }
+
+        .exp-icon {
+            width: 64px; height: 64px; margin: 0 auto 1.2rem;
+            background: var(--pale-pink); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+        }
+
+        .experience-item h3 {
+            font-family: var(--font-title); font-size: 1rem; font-weight: 700;
+            color: var(--navy); margin-bottom: 0.8rem;
+        }
+        .experience-item p { font-size: 0.9rem; color: #666; line-height: 1.6; }
+
+        /* ===================== MINI-JEU ===================== */
+        .game-section {
+            background: var(--navy); padding: 4rem 2rem; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .game-section .section-label { color: var(--coral); }
+        .game-section .section-title { color: var(--white); margin-bottom: 0.8rem; }
+
+        .game-intro { color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 2rem; font-weight: 300; }
+
+        .game-container {
+            position: relative; max-width: 800px; margin: 0 auto;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+        }
+        .game-container canvas { display: block; width: 100%; height: auto; cursor: pointer; }
+
+        .game-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: rgba(0,43,100,0.88); z-index: 2; transition: opacity 0.4s;
+            border-radius: 16px;
+        }
+        .game-overlay.hidden { opacity: 0; pointer-events: none; }
+        .game-overlay h3 { font-family: var(--font-title); font-size: 1.5rem; color: var(--white); margin-bottom: 0.5rem; }
+        .game-overlay p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .game-play-btn {
+            background: var(--coral); color: var(--white); border: none;
+            padding: 0.8rem 2rem; font-family: var(--font-body);
+            font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+            border-radius: 6px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .game-play-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(242,69,53,0.4); }
+        .game-score-display { color: var(--coral); font-family: var(--font-title); font-size: 1rem; font-weight: 700; margin-top: 1rem; }
+        .game-controls-hint { color: rgba(255,255,255,0.35); font-size: 0.75rem; margin-top: 1rem; letter-spacing: 1px; }
+
+        /* ===================== PARTENAIRES ===================== */
+        .partenaires { background: var(--white); text-align: center; }
+
+        .partenaires-intro {
+            font-size: 1.05rem; line-height: 1.9; color: #555; font-weight: 300;
+            max-width: 600px; margin: 0 auto 3rem;
+        }
+
+        .partenaires-grid {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 1.5rem; align-items: stretch;
+        }
+        .partenaire-item {
+            background: var(--pale-pink); border-radius: 10px; padding: 1.5rem 2rem;
+            min-width: 160px; display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-title); font-weight: 700; font-size: 0.85rem;
+            color: var(--navy); letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0,43,100,0.06);
+        }
+        .partenaire-item:hover {
+            transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .partenaire-item.asso {
+            border: 2px solid var(--coral); background: var(--white);
+        }
+
+        .partenaires-thanks {
+            margin-top: 2.5rem; font-style: italic;
+            color: var(--navy); font-weight: 500; font-size: 1rem; opacity: 0.7;
+        }
+
+        /* ===================== INFOS PRATIQUES ===================== */
+        .infos { background: var(--navy); color: var(--white); }
+        .infos .section-title { color: var(--white); }
+
+        .infos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+        .infos-list { list-style: none; }
+        .infos-list li {
+            padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; gap: 1rem; align-items: flex-start;
+        }
+        .infos-list li:last-child { border-bottom: none; }
+        .info-icon { font-size: 1.3rem; flex-shrink: 0; width: 30px; text-align: center; }
+        .info-content strong { display: block; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+        .info-content span { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+        .infos-map {
+            border-radius: 12px; overflow: hidden; min-height: 300px;
+            background: rgba(255,255,255,0.08);
+        }
+        .infos-map iframe { width: 100%; height: 100%; min-height: 300px; border: none; border-radius: 12px; }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: var(--dark); color: var(--white); text-align: center; padding: 4rem 2rem;
+        }
+        .footer-logo {
+            font-family: var(--font-title); font-size: 2rem; font-weight: 800;
+            letter-spacing: 5px; text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .footer-tagline { font-size: 1rem; font-weight: 300; opacity: 0.6; margin-bottom: 2rem; }
+
+        .footer-socials { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem; }
+        .footer-socials a {
+            display: flex; align-items: center; justify-content: center;
+            width: 44px; height: 44px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2); color: var(--white);
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .footer-socials a:hover { background: var(--coral); border-color: var(--coral); }
+        .footer-copy { font-size: 0.75rem; opacity: 0.4; }
+        .footer-credit { font-size: 0.7rem; opacity: 0.3; margin-top: 0.8rem; }
+        .footer-credit a { color: var(--coral); opacity: 1; text-decoration: underline; }
+
+        /* ===================== STICKY CTA ===================== */
+        .sticky-cta {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--coral); color: var(--white); text-align: center;
+            padding: 1rem; font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 2px; text-transform: uppercase;
+            z-index: 999; box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: var(--navy); flex-direction: column;
+                justify-content: center; align-items: center; gap: 2rem;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.1rem; }
+            .hamburger { display: flex; }
+            .countdown { gap: 0.8rem; flex-wrap: wrap; }
+            .countdown-item { min-width: 60px; padding: 0.6rem 0.8rem; }
+            .countdown-number { font-size: 1.8rem; }
+            .evenement-grid, .programme-grid, .infos-grid { grid-template-columns: 1fr; }
+            .experience-items { grid-template-columns: 1fr; }
+            .photo-mosaic { grid-template-rows: 180px 180px 180px; grid-template-columns: 1fr; }
+            .photo-mosaic .mosaic-cell:first-child { grid-row: auto; }
+            .section { padding: 4rem 1.5rem; }
+            .sticky-cta { display: block; }
+            .footer { padding-bottom: 5rem; }
+            .hero-logo-img { width: clamp(200px, 60vw, 320px); }
+            .histoire-quote { padding: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-badge { font-size: 0.6rem; }
+            .countdown-number { font-size: 1.5rem; }
+            .epreuve-height { font-size: 1.3rem; }
+            .hero-logo-img { width: clamp(180px, 65vw, 260px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAV ========== -->
+    <nav class="nav" id="nav">
+        <a href="#hero" class="nav-logo"><img src="ressources/ELANCE-LOGOS/ELANCE-LOGO-CHEVAL-ROSE.png" alt="Elance" class="nav-logo-img"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#histoire">Notre histoire</a></li>
+            <li><a href="#programme">Programme</a></li>
+            <li><a href="#minijeu">Le jeu</a></li>
+            <li><a href="#infos">Infos pratiques</a></li>
+            <li><a href="#" class="nav-cta" id="navCtaBtn">S'inscrire</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-img"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">Première édition</div>
+            <img src="ressources/ELANCE-LOGOS/ELANCE-LOGO-CHEVAL-ROSE.png" alt="Elance — Événements Équestres" class="hero-logo-img">
+            <h1 class="hero-h1-sr">Elance — Concours de Saut d'Obstacles sur Herbe en Normandie</h1>
+            <p class="hero-tagline">Premier CSO sur herbe en Normandie</p>
+            <p class="hero-location">30 & 31 mai 2026 • Ferme de la Motte, Val de Reuil</p>
+
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">--</span>
+                    <span class="countdown-label">Jours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">--</span>
+                    <span class="countdown-label">Heures</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">--</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">--</span>
+                    <span class="countdown-label">Secondes</span>
+                </div>
+            </div>
+
+            <a href="#programme" class="hero-btn">Découvrir le programme</a>
+        </div>
+
+        <!-- Grass wave at bottom -->
+        <svg class="hero-grass" viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 50 L0 35 Q60 15 120 30 Q180 42 240 25 Q300 10 360 28 Q420 40 480 20 Q540 5 600 25 Q660 38 720 18 Q780 2 840 22 Q900 36 960 15 Q1020 0 1080 22 Q1140 38 1200 20 Q1260 5 1320 28 Q1380 42 1440 32 L1440 50Z" fill="white"/>
+        </svg>
+
+        <div class="scroll-indicator"><span></span></div>
+    </section>
+
+    <!-- ========== HISTOIRE ========== -->
+    <section class="section histoire" id="histoire">
+        <div class="section-inner fade-in">
+            <p class="section-label">Notre histoire</p>
+            <h2 class="section-title">On n'a pas créé Elance dans un bureau.</h2>
+            <div class="section-text">
+                <p>On l'a créé les bottes dans la terre, le regard fixé sur les barres.</p>
+                <p>Elance, c'est une idée simple : <strong>rassembler les cavaliers qui vivent leur passion pour de vrai.</strong> Ceux qui se lèvent tôt pour seller. Ceux qui connaissent le bruit des sabots mieux que n'importe quelle musique. Ceux pour qui un parcours sans faute, ça donne des frissons.</p>
+                <p>On organise des événements équestres : du saut d'obstacles, des rencontres entre passionnés, des moments qu'on ne vit nulle part ailleurs.</p>
+                <p>Notre premier événement arrive très bientôt. Et on a hâte de vous y retrouver.</p>
+            </div>
+
+            <div class="histoire-quote">
+                <blockquote>Bienvenue chez vous. Bienvenue chez Elance.</blockquote>
+                <cite>— L'équipe Elance</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ÉVÉNEMENT ========== -->
+    <section class="section evenement" id="evenement">
+        <div class="section-inner fade-in">
+            <p class="section-label">L'événement</p>
+            <h2 class="section-title">La Ferme de la Motte, Val de Reuil</h2>
+            <div class="evenement-intro">
+                <p>On a visité je-sais-plus combien de terrains avant de trouver le bon. Et puis un jour, on est arrivés à la Ferme de la Motte. On a marché sur le terrain en herbe. On a regardé autour. Le ciel était immense. Silence total. Et on s'est regardés sans rien dire pendant 10 secondes. <strong>On savait. C'était là.</strong></p>
+                <p style="margin-top: 1rem;">Ça fait des années qu'on vient concourir ici, aux événements organisés par l'association La Motte. Quand on leur a dit « on a un projet un peu fou », ils nous ont ouvert la porte. Sans eux, Elance n'existerait pas encore.</p>
+            </div>
+
+            <div class="evenement-grid">
+                <div class="evenement-card">
+                    <div class="card-icon-wrap">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <path d="M3 20 L13 4 L23 20Z" stroke="var(--coral)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                            <path d="M7 20 Q13 14 19 20" stroke="var(--coral)" stroke-width="1.5" fill="none"/>
+                            <circle cx="17" cy="9" r="2.5" stroke="var(--coral)" stroke-width="1.5" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Un terrain d'exception</h3>
+                    <p>CSO sur herbe en plein air, dans un cadre champêtre normand. Le terrain que les cavaliers rêvent de retrouver.</p>
+                </div>
+                <div class="evenement-card">
+                    <div class="card-icon-wrap">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <rect x="3" y="6" width="20" height="17" rx="2" stroke="var(--coral)" stroke-width="2" fill="none"/>
+                            <line x1="3" y1="12" x2="23" y2="12" stroke="var(--coral)" stroke-width="2"/>
+                            <line x1="9" y1="6" x2="9" y2="3" stroke="var(--coral)" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="17" y1="6" x2="17" y2="3" stroke="var(--coral)" stroke-width="2" stroke-linecap="round"/>
+                            <text x="10" y="21" font-size="8" fill="var(--coral)" font-weight="700" font-family="sans-serif">30</text>
+                        </svg>
+                    </div>
+                    <h3>30 & 31 mai 2026</h3>
+                    <p>Deux jours de compétition, du Club 3 au Derby 130. Dotations jusqu'à 1 000€.</p>
+                </div>
+                <div class="evenement-card">
+                    <div class="card-icon-wrap">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <path d="M5 8 L5 18 Q5 22 9 22 L11 18 L11 8 M15 8 L15 18 Q15 22 19 22 L21 18 L21 8" stroke="var(--coral)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <line x1="4" y1="10" x2="12" y2="10" stroke="var(--coral)" stroke-width="2.5"/>
+                            <line x1="14" y1="10" x2="22" y2="10" stroke="var(--coral)" stroke-width="2.5"/>
+                            <line x1="4" y1="14" x2="12" y2="14" stroke="var(--coral)" stroke-width="2"/>
+                            <line x1="14" y1="14" x2="22" y2="14" stroke="var(--coral)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Plus qu'un concours</h3>
+                    <p>Charcuterie, champagne, bar à jus frais. Initiation équestre. Cadeaux. Bouquet aux dames.</p>
+                </div>
+                <div class="evenement-card">
+                    <div class="card-icon-wrap">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <circle cx="13" cy="13" r="9" stroke="var(--coral)" stroke-width="2" fill="none"/>
+                            <path d="M9 13 L12 16 L18 10" stroke="var(--coral)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Entrée libre</h3>
+                    <p>Spectateurs, familles, curieux — tout le monde est bienvenu. Parking gratuit sur place.</p>
+                </div>
+            </div>
+
+            <!-- Photo mosaic du lieu -->
+            <div class="photo-mosaic fade-in">
+                <div class="mosaic-cell">
+                    <img class="mosaic-img" src="ressources/photos/iris-obstacles.png" alt="Obstacles vus à travers les iris — Ferme de la Motte" loading="lazy">
+                </div>
+                <div class="mosaic-cell">
+                    <img class="mosaic-img" src="ressources/photos/terrain-obstacles.png" alt="Terrain en herbe avec obstacles et arbres" loading="lazy">
+                </div>
+                <div class="mosaic-cell">
+                    <img class="mosaic-img" src="ressources/photos/ferme-arcenciel.png" alt="La Ferme de la Motte sous un arc-en-ciel" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROGRAMME ========== -->
+    <section class="section programme" id="programme">
+        <div class="section-inner fade-in">
+            <p class="section-label">Le programme</p>
+            <h2 class="section-title">Trouvez votre épreuve.</h2>
+            <p class="section-text">On a passé des heures à construire ce programme. On voulait que chaque cavalier — du petit galop 7 au confirmé — trouve sa place.</p>
+
+            <div class="programme-grid">
+                <div class="programme-day">
+                    <h3 class="programme-day-title">Samedi</h3>
+                    <p class="programme-day-date">30 mai 2026</p>
+                    <div class="epreuve">
+                        <span class="epreuve-height">80</span>
+                        <span class="epreuve-type">Prépa</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">—</span>
+                            <span class="epreuve-engagement">Engagement : 21€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height">90</span>
+                        <span class="epreuve-type">Prépa</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">—</span>
+                            <span class="epreuve-engagement">Engagement : 21€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height">100</span>
+                        <span class="epreuve-type">Vitesse</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">150€</span>
+                            <span class="epreuve-engagement">Engagement : 25€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height">110</span>
+                        <span class="epreuve-type">GP + tps différé</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">200€</span>
+                            <span class="epreuve-engagement">Engagement : 32€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height">120</span>
+                        <span class="epreuve-type">GP barrage</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation" style="font-size: 1rem; font-weight: 700;">900€</span>
+                            <span class="epreuve-engagement">Engagement : 40€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height" style="color: var(--coral);">Derby</span>
+                        <span class="epreuve-type">100cm</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">300€</span>
+                            <span class="epreuve-engagement">Engagement : 30€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="programme-day">
+                    <h3 class="programme-day-title">Dimanche</h3>
+                    <p class="programme-day-date">31 mai 2026</p>
+                    <div class="epreuve">
+                        <span class="epreuve-height">85</span>
+                        <span class="epreuve-type">GP barrage</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">50€</span>
+                            <span class="epreuve-engagement">Engagement : 22€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height">95</span>
+                        <span class="epreuve-type">GP barrage</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">100€</span>
+                            <span class="epreuve-engagement">Engagement : 25€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height">105</span>
+                        <span class="epreuve-type">GP barrage</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">400€</span>
+                            <span class="epreuve-engagement">Engagement : 30€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height">115</span>
+                        <span class="epreuve-type">GP barrage</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation">500€</span>
+                            <span class="epreuve-engagement">Engagement : 35€</span>
+                        </div>
+                    </div>
+                    <div class="epreuve">
+                        <span class="epreuve-height" style="font-size: 1.4rem;">125</span>
+                        <span class="epreuve-type">GP barrage</span>
+                        <div class="epreuve-info">
+                            <span class="epreuve-dotation" style="font-size: 1rem; font-weight: 700;">1 000€</span>
+                            <span class="epreuve-engagement">Engagement : 40€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="programme-extras">
+                <p><span>+ Initiation équestre</span> • <span>Cadeaux</span> • <span>Bouquet aux dames</span></p>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.5rem; padding: 1.2rem; background: var(--pale-pink); border-radius: 10px; border-left: 3px solid var(--coral);">
+                <p style="font-size: 0.85rem; color: var(--navy); font-style: italic; line-height: 1.6;">Les engagés sont limités à 150 par jour, sauf invitation de l'engageur.<br>Formule ouverte aux clubs.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 2.5rem; padding: 1.5rem; background: var(--navy); border-radius: 12px;">
+                <p style="color: var(--white); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Ouvert au public — Entrée gratuite</p>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Venez en famille, entre amis. Pas besoin de monter pour profiter de l'événement.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn-inscrire disabled" id="inscriptionBtn">Inscriptions bientôt ouvertes</a>
+                <p class="inscription-note">Les inscriptions se feront sur le site de la FFE.<br>On vous préviendra ici dès qu'elles seront ouvertes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EXPÉRIENCE ========== -->
+    <section class="section experience" id="experience">
+        <div class="section-inner fade-in">
+            <p class="section-label">L'expérience</p>
+            <h2 class="section-title">Pourquoi un cavalier devrait manger un sandwich triangle en plastique ?</h2>
+            <p class="section-text">Au début, on avait prévu des sandwiches et du café. Et puis on s'est dit : non. On veut que vous repartiez en vous disant « c'était pas juste un concours ».</p>
+
+            <div class="experience-items">
+                <div class="experience-item">
+                    <div class="exp-icon">🧀</div>
+                    <h3>Gastronomie</h3>
+                    <p>Planches de charcuterie artisanale, fromage normand, fruits de saison. Pas de sandwich sous plastique.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="exp-icon">🥂</div>
+                    <h3>Bar & boissons</h3>
+                    <p>Champagne, vin, bière fraîche. Bar à jus de fruits pressés devant vous.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="exp-icon">🐴</div>
+                    <h3>Initiation</h3>
+                    <p>Vos proches découvrent l'équitation pendant que vous montez. Cadeaux à gagner. Bouquet aux dames.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MINI-JEU ========== -->
+    <section class="game-section" id="minijeu">
+        <p class="section-label">En attendant le jour J</p>
+        <h2 class="section-title" style="font-family: var(--font-title); font-size: clamp(1.5rem,3.5vw,2.2rem);">Saute les obstacles !</h2>
+        <p class="game-intro">Un petit jeu pour patienter. Appuyez sur Espace ou touchez l'écran pour sauter.</p>
+
+        <div class="game-container" id="gameContainer">
+            <canvas id="gameCanvas" width="800" height="280"></canvas>
+            <div class="game-overlay" id="gameOverlay">
+                <h3 id="overlayTitle">Prêt à galoper ?</h3>
+                <p id="overlayText">Sautez par-dessus les obstacles de CSO</p>
+                <button class="game-play-btn" id="gameStartBtn">Jouer</button>
+                <div class="game-score-display" id="finalScore"></div>
+            </div>
+        </div>
+        <p class="game-controls-hint">Espace / Tap pour sauter — Double pour le double saut</p>
+    </section>
+
+    <!-- ========== PARTENAIRES ========== -->
+    <section class="section partenaires" id="partenaires">
+        <div class="section-inner fade-in">
+            <p class="section-label">Nos partenaires</p>
+            <h2 class="section-title">Ils croient en nous<br>depuis le premier jour.</h2>
+            <p class="partenaires-intro">Dix partenaires ont choisi de nous faire confiance pour notre toute première édition. C'est de la confiance brute. On ne les décevra pas.</p>
+
+            <div class="partenaires-grid">
+                <div class="partenaire-item">Eiffage TP</div>
+                <div class="partenaire-item">NGE Énergies Solutions</div>
+                <div class="partenaire-item">Solek</div>
+                <div class="partenaire-item">Loxam</div>
+                <div class="partenaire-item">Agence NAY</div>
+                <div class="partenaire-item">Aurélia Coiffure</div>
+                <div class="partenaire-item">Ville de Val de Reuil</div>
+                <div class="partenaire-item">Yann Quéniart</div>
+                <div class="partenaire-item">FD Réseaux</div>
+                <div class="partenaire-item">Equiseine</div>
+                <div class="partenaire-item asso">Association La Motte</div>
+            </div>
+            <p class="partenaires-thanks">Merci. Vraiment.</p>
+        </div>
+    </section>
+
+    <!-- ========== INFOS PRATIQUES ========== -->
+    <section class="section infos" id="infos">
+        <div class="section-inner fade-in">
+            <p class="section-label" style="color: var(--coral);">Infos pratiques</p>
+            <h2 class="section-title">On veut que votre venue soit simple.</h2>
+
+            <div class="infos-grid">
+                <ul class="infos-list">
+                    <li>
+                        <span class="info-icon">📍</span>
+                        <div class="info-content">
+                            <strong>Lieu</strong>
+                            <span>Ferme de la Motte, Val de Reuil (27)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-icon">📅</span>
+                        <div class="info-content">
+                            <strong>Dates</strong>
+                            <span>Samedi 30 & Dimanche 31 mai 2026</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-icon">🅿️</span>
+                        <div class="info-content">
+                            <strong>Parking</strong>
+                            <span>Gratuit — on a pensé aux vans</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-icon">🎟️</span>
+                        <div class="info-content">
+                            <strong>Entrée spectateurs</strong>
+                            <span>Libre et gratuite</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-icon">🍽️</span>
+                        <div class="info-content">
+                            <strong>Restauration</strong>
+                            <span>Charcuterie, fromage, champagne, jus frais</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="info-icon">📧</span>
+                        <div class="info-content">
+                            <strong>Contact</strong>
+                            <span>contact@elance-equitation.fr</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="infos-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10400!2d1.2!3d49.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDE2JzEyLjAiTiAxwrAxMicwMC4wIkU!5e0!3m2!1sfr!2sfr!4v1"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-logo"><img src="ressources/ELANCE-LOGOS/ELANCE-LOGO-CHEVAL-ROSE.png" alt="Elance" style="height: 80px; width: auto;"></div>
+        <p class="footer-tagline">Ce n'est que le début.</p>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/profile.php?id=61575185498498" target="_blank" aria-label="Facebook">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" target="_blank" aria-label="Instagram">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Elance — Tous droits réservés</p>
+        <p class="footer-credit">Site réalisé par <a href="https://agence-nay.fr" target="_blank">Agence NAY</a></p>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <a href="#programme" class="sticky-cta" id="stickyCta">Voir le programme</a>
+
+    <!-- ========== JS ========== -->
+    <script>
+        // ===== COUNTDOWN =====
+        function updateCountdown() {
+            const eventDate = new Date('2026-05-30T08:00:00+02:00');
+            const now = new Date();
+            const diff = eventDate - now;
+            if (diff <= 0) {
+                ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '0');
+                return;
+            }
+            document.getElementById('days').textContent = Math.floor(diff / 86400000);
+            document.getElementById('hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+            document.getElementById('minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+            document.getElementById('seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // ===== NAV =====
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80));
+
+        // ===== HAMBURGER =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); });
+        });
+
+        // ===== FADE IN =====
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ============================================
+        // MINI-JEU CSO
+        // ============================================
+        (function() {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            const overlay = document.getElementById('gameOverlay');
+            const startBtn = document.getElementById('gameStartBtn');
+            const overlayTitle = document.getElementById('overlayTitle');
+            const overlayText = document.getElementById('overlayText');
+            const finalScoreEl = document.getElementById('finalScore');
+
+            const NAVY = '#002B64', CORAL = '#F24535', SKY_TOP = '#87CEEB', SKY_BOT = '#c8e6f5';
+            const GRASS = '#4a8c3f', GRASS_DARK = '#3d7534', BROWN = '#8B6914';
+
+            let gameRunning = false, score = 0, highScore = 0, speed = 5, frameCount = 0, animFrame;
+            const GROUND_Y = 220, GRAVITY = 0.6, JUMP_FORCE = -12;
+
+            const horse = { x:120, y:GROUND_Y, w:60, h:50, vy:0, jumping:false, canDoubleJump:true, jumpCount:0, legPhase:0, manePhase:0 };
+            let obstacles = [], obstacleTimer = 0;
+            let clouds = [{ x:100,y:30,w:80,s:0.3 },{ x:350,y:50,w:60,s:0.2 },{ x:600,y:25,w:90,s:0.35 }];
+            let grassTufts = [];
+            for (let i=0;i<20;i++) grassTufts.push({ x:Math.random()*800, h:3+Math.random()*6 });
+
+            function reset() {
+                horse.y=GROUND_Y; horse.vy=0; horse.jumping=false; horse.canDoubleJump=true;
+                horse.jumpCount=0; horse.legPhase=0; obstacles=[]; obstacleTimer=60;
+                score=0; speed=5; frameCount=0;
+            }
+
+            function jump() {
+                if (!gameRunning) return;
+                if (!horse.jumping) { horse.vy=JUMP_FORCE; horse.jumping=true; horse.jumpCount=1; horse.canDoubleJump=true; }
+                else if (horse.canDoubleJump && horse.jumpCount<2) { horse.vy=JUMP_FORCE*0.85; horse.jumpCount=2; horse.canDoubleJump=false; }
+            }
+
+            function spawnObstacle() {
+                const types=['single','oxer','triple'];
+                const type=types[Math.floor(Math.random()*types.length)];
+                let h,w;
+                if (type==='single'){h=35+Math.random()*20;w=20;}
+                else if (type==='oxer'){h=30+Math.random()*20;w=40;}
+                else {h=25+Math.random()*15;w=55;}
+                obstacles.push({x:820,type,h,w});
+            }
+
+            function drawCloud(x,y,w) {
+                ctx.fillStyle='rgba(255,255,255,0.6)';
+                ctx.beginPath(); ctx.ellipse(x,y,w*0.5,12,0,0,Math.PI*2); ctx.fill();
+                ctx.beginPath(); ctx.ellipse(x-w*0.25,y+4,w*0.3,8,0,0,Math.PI*2); ctx.fill();
+                ctx.beginPath(); ctx.ellipse(x+w*0.25,y+3,w*0.35,9,0,0,Math.PI*2); ctx.fill();
+            }
+
+            function drawHorse(x,y) {
+                const phase=horse.legPhase;
+                const bodyY=y-25+(horse.jumping?0:Math.abs(Math.sin(phase))*2);
+
+                if (!horse.jumping||horse.y>GROUND_Y-20){ctx.fillStyle='rgba(0,0,0,0.1)';ctx.beginPath();ctx.ellipse(x+5,GROUND_Y+5,28,5,0,0,Math.PI*2);ctx.fill();}
+
+                // Tail
+                ctx.strokeStyle=NAVY;ctx.lineWidth=3;ctx.lineCap='round';
+                const tw=Math.sin(horse.manePhase*2)*5;
+                ctx.beginPath();ctx.moveTo(x-25,bodyY-2);ctx.quadraticCurveTo(x-38+tw,bodyY-10,x-42+tw,bodyY+2);ctx.stroke();
+
+                // Back legs
+                ctx.strokeStyle='#001a3d';ctx.lineWidth=4;
+                const bl1=horse.jumping?-20:Math.sin(phase)*12, bl2=horse.jumping?15:Math.sin(phase+Math.PI)*12;
+                ctx.beginPath();ctx.moveTo(x-15,bodyY+10);ctx.lineTo(x-15+bl1*0.3,bodyY+25);ctx.lineTo(x-12+bl1*0.5,GROUND_Y+3);ctx.stroke();
+                ctx.beginPath();ctx.moveTo(x-10,bodyY+10);ctx.lineTo(x-10+bl2*0.3,bodyY+25);ctx.lineTo(x-7+bl2*0.5,GROUND_Y+3);ctx.stroke();
+
+                // Body
+                ctx.fillStyle=NAVY;ctx.beginPath();ctx.ellipse(x,bodyY,28,14,-0.1,0,Math.PI*2);ctx.fill();
+
+                // Front legs
+                ctx.strokeStyle=NAVY;ctx.lineWidth=4;
+                const fl1=horse.jumping?20:Math.sin(phase+Math.PI)*12, fl2=horse.jumping?-10:Math.sin(phase)*12;
+                ctx.beginPath();ctx.moveTo(x+15,bodyY+8);ctx.lineTo(x+18+fl1*0.4,bodyY+22);ctx.lineTo(x+20+fl1*0.6,GROUND_Y+3);ctx.stroke();
+                ctx.beginPath();ctx.moveTo(x+20,bodyY+8);ctx.lineTo(x+23+fl2*0.4,bodyY+22);ctx.lineTo(x+25+fl2*0.6,GROUND_Y+3);ctx.stroke();
+
+                // Hooves
+                if(!horse.jumping){ctx.fillStyle='#333';[[x-12,bl1],[x-7,bl2],[x+20,fl1],[x+25,fl2]].forEach(([hx,l])=>{ctx.fillRect(hx+l*0.5-2,GROUND_Y+1,5,3);});}
+
+                // Neck
+                ctx.fillStyle=NAVY;ctx.beginPath();ctx.moveTo(x+18,bodyY-8);ctx.quadraticCurveTo(x+30,bodyY-28,x+35,bodyY-38);ctx.lineTo(x+28,bodyY-35);ctx.quadraticCurveTo(x+22,bodyY-20,x+15,bodyY-5);ctx.fill();
+
+                // Head
+                ctx.fillStyle=NAVY;ctx.beginPath();ctx.ellipse(x+38,bodyY-40,10,7,0.4,0,Math.PI*2);ctx.fill();
+                ctx.fillStyle='#003d7a';ctx.beginPath();ctx.ellipse(x+46,bodyY-37,5,4,0.3,0,Math.PI*2);ctx.fill();
+                ctx.fillStyle='white';ctx.beginPath();ctx.arc(x+38,bodyY-42,2.5,0,Math.PI*2);ctx.fill();
+                ctx.fillStyle='#111';ctx.beginPath();ctx.arc(x+38.5,bodyY-42,1.2,0,Math.PI*2);ctx.fill();
+
+                // Ears
+                ctx.fillStyle=NAVY;
+                ctx.beginPath();ctx.moveTo(x+33,bodyY-46);ctx.lineTo(x+30,bodyY-56);ctx.lineTo(x+36,bodyY-48);ctx.fill();
+                ctx.beginPath();ctx.moveTo(x+37,bodyY-46);ctx.lineTo(x+36,bodyY-55);ctx.lineTo(x+40,bodyY-47);ctx.fill();
+
+                // Mane
+                ctx.strokeStyle='#001a3d';ctx.lineWidth=2.5;
+                const mw=Math.sin(horse.manePhase)*3;
+                for(let i=0;i<5;i++){ctx.beginPath();const mx=x+20+i*3,my=bodyY-30+i*5;ctx.moveTo(mx,my);ctx.quadraticCurveTo(mx-8+mw,my+3,mx-10+mw*1.5,my+8);ctx.stroke();}
+
+                // Rider
+                const rY=bodyY-14;
+                ctx.strokeStyle='#2a1a0a';ctx.lineWidth=3.5;
+                ctx.beginPath();ctx.moveTo(x-5,rY+2);ctx.lineTo(x-8,rY+16);ctx.lineTo(x-4,rY+18);ctx.stroke();
+                ctx.beginPath();ctx.moveTo(x+5,rY+2);ctx.lineTo(x+8,rY+16);ctx.lineTo(x+12,rY+18);ctx.stroke();
+
+                ctx.fillStyle=CORAL;ctx.beginPath();ctx.moveTo(x-5,rY);ctx.lineTo(x+6,rY);ctx.lineTo(x+4,rY-18);ctx.lineTo(x-3,rY-18);ctx.fill();
+                ctx.strokeStyle='#f5cba7';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(x+3,rY-14);ctx.quadraticCurveTo(x+18,rY-20,x+35,bodyY-35);ctx.stroke();
+                ctx.strokeStyle=BROWN;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x+35,bodyY-35);ctx.lineTo(x+44,bodyY-36);ctx.stroke();
+                ctx.fillStyle='#f5cba7';ctx.beginPath();ctx.arc(x,rY-23,6,0,Math.PI*2);ctx.fill();
+                ctx.fillStyle='#1a1a2e';ctx.beginPath();ctx.arc(x,rY-25,6.5,Math.PI,0);ctx.fill();
+                ctx.fillRect(x-7.5,rY-25,15,2);
+            }
+
+            function drawObstacle(obs) {
+                const bY=GROUND_Y;
+                if(obs.type==='single'){
+                    ctx.fillStyle='#f5f5f0';ctx.fillRect(obs.x-2,bY-obs.h,5,obs.h+3);ctx.fillRect(obs.x+obs.w-3,bY-obs.h,5,obs.h+3);
+                    [CORAL,'#fff',CORAL].forEach((c,i)=>{const by=bY-obs.h+i*(obs.h/3);ctx.fillStyle=c;ctx.fillRect(obs.x-1,by,obs.w+2,4);});
+                    ctx.fillStyle='#ccc';ctx.fillRect(obs.x-3,bY-obs.h-1,7,5);ctx.fillRect(obs.x+obs.w-4,bY-obs.h-1,7,5);
+                } else if(obs.type==='oxer'){
+                    ctx.fillStyle='#f5f5f0';ctx.fillRect(obs.x,bY-obs.h,4,obs.h+3);ctx.fillRect(obs.x+18,bY-obs.h-5,4,obs.h+8);ctx.fillRect(obs.x+36,bY-obs.h,4,obs.h+3);
+                    ctx.fillStyle=CORAL;ctx.fillRect(obs.x-1,bY-obs.h,22,4);ctx.fillStyle='#fff';ctx.fillRect(obs.x-1,bY-obs.h+obs.h*0.4,22,4);
+                    ctx.fillStyle=NAVY;ctx.fillRect(obs.x+17,bY-obs.h-5,22,4);ctx.fillStyle='#fff';ctx.fillRect(obs.x+17,bY-obs.h-5+obs.h*0.4,22,4);
+                } else {
+                    for(let i=0;i<3;i++){const rx=obs.x+i*18,rh=obs.h+i*8;ctx.fillStyle='#f5f5f0';ctx.fillRect(rx,bY-rh,4,rh+3);ctx.fillRect(rx+14,bY-rh,4,rh+3);ctx.fillStyle=i===1?'#fff':CORAL;ctx.fillRect(rx-1,bY-rh,18,4);}
+                }
+                ctx.fillStyle='#5a9e4b';ctx.fillRect(obs.x-3,bY-3,obs.w+6,6);ctx.fillStyle='#4a8c3f';ctx.fillRect(obs.x-2,bY-5,obs.w+4,3);
+                ['#ff6b6b','#ffd93d','#ff6b6b','#fff'].forEach((c,i)=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(obs.x+2+i*(obs.w/4),bY-6,2,0,Math.PI*2);ctx.fill();});
+            }
+
+            function draw() {
+                const skyGrad=ctx.createLinearGradient(0,0,0,GROUND_Y);
+                skyGrad.addColorStop(0,SKY_TOP);skyGrad.addColorStop(1,SKY_BOT);
+                ctx.fillStyle=skyGrad;ctx.fillRect(0,0,800,GROUND_Y);
+
+                clouds.forEach(c=>drawCloud(c.x,c.y,c.w));
+
+                ctx.fillStyle='#a8d5a0';ctx.beginPath();ctx.moveTo(0,GROUND_Y);
+                ctx.quadraticCurveTo(100,GROUND_Y-30,200,GROUND_Y-15);ctx.quadraticCurveTo(350,GROUND_Y-40,500,GROUND_Y-10);
+                ctx.quadraticCurveTo(650,GROUND_Y-35,800,GROUND_Y-5);ctx.lineTo(800,GROUND_Y);ctx.fill();
+
+                ctx.fillStyle=GRASS;ctx.fillRect(0,GROUND_Y,800,60);
+                ctx.fillStyle=GRASS_DARK;ctx.fillRect(0,GROUND_Y,800,3);
+
+                ctx.strokeStyle='#5aa34e';ctx.lineWidth=1.5;
+                grassTufts.forEach(t=>{ctx.beginPath();ctx.moveTo(t.x,GROUND_Y);ctx.lineTo(t.x-2,GROUND_Y-t.h);ctx.stroke();ctx.beginPath();ctx.moveTo(t.x+2,GROUND_Y);ctx.lineTo(t.x+4,GROUND_Y-t.h*0.8);ctx.stroke();});
+
+                ctx.fillStyle='#8B7355';ctx.fillRect(0,GROUND_Y+40,800,40);
+                ctx.fillStyle='#7a6548';ctx.fillRect(0,GROUND_Y+40,800,2);
+
+                obstacles.forEach(o=>drawObstacle(o));
+                drawHorse(horse.x,horse.y);
+
+                ctx.fillStyle=NAVY;ctx.font='700 18px Montserrat,sans-serif';ctx.textAlign='right';
+                ctx.fillText(score+' m',780,30);
+                if(highScore>0){ctx.font='400 12px Montserrat,sans-serif';ctx.fillStyle='rgba(0,43,100,0.5)';ctx.fillText('Record: '+highScore+' m',780,48);}
+                ctx.font='800 14px Montserrat,sans-serif';ctx.fillStyle='rgba(0,43,100,0.08)';ctx.textAlign='left';ctx.fillText('ELANCE',15,25);
+            }
+
+            function update() {
+                frameCount++;
+                if(frameCount%300===0)speed+=0.3;
+                horse.vy+=GRAVITY;horse.y+=horse.vy;
+                if(horse.y>=GROUND_Y){horse.y=GROUND_Y;horse.vy=0;horse.jumping=false;horse.jumpCount=0;horse.canDoubleJump=true;}
+                if(!horse.jumping)horse.legPhase+=speed*0.08;
+                horse.manePhase+=0.1;
+
+                obstacleTimer--;
+                if(obstacleTimer<=0){spawnObstacle();obstacleTimer=80+Math.random()*160;}
+                obstacles.forEach(o=>{o.x-=speed;});
+                obstacles=obstacles.filter(o=>o.x>-60);
+                grassTufts.forEach(t=>{t.x-=speed*0.5;if(t.x<-10)t.x=810;});
+                clouds.forEach(c=>{c.x-=c.s;if(c.x<-100)c.x=900;});
+
+                const hb={x:horse.x-15,y:horse.y-48,w:50,h:48};
+                for(let o of obstacles){
+                    const ob={x:o.x-2,y:GROUND_Y-o.h-(o.type==='oxer'?5:0),w:o.w+4,h:o.h+(o.type==='oxer'?5:0)};
+                    if(hb.x<ob.x+ob.w&&hb.x+hb.w>ob.x&&hb.y+hb.h>ob.y&&hb.y<ob.y+ob.h){gameOver();return;}
+                }
+                if(frameCount%6===0)score++;
+            }
+
+            function gameLoop(){if(!gameRunning)return;update();draw();animFrame=requestAnimationFrame(gameLoop);}
+
+            function startGame(){reset();gameRunning=true;overlay.classList.add('hidden');finalScoreEl.textContent='';gameLoop();}
+
+            function gameOver(){
+                gameRunning=false;cancelAnimationFrame(animFrame);
+                if(score>highScore)highScore=score;
+                overlayTitle.textContent='Barre tombée !';
+                overlayText.textContent='Vous avez parcouru '+score+' mètres';
+                finalScoreEl.textContent=highScore>score?'Record: '+highScore+' m':'Nouveau record !';
+                startBtn.textContent='Rejouer';overlay.classList.remove('hidden');
+            }
+
+            startBtn.addEventListener('click',startGame);
+            document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();if(!gameRunning)startGame();else jump();}});
+            canvas.addEventListener('click',()=>{if(gameRunning)jump();});
+            canvas.addEventListener('touchstart',e=>{e.preventDefault();if(!gameRunning)startGame();else jump();},{passive:false});
+            draw();
+        })();
+    </script>
+</body>
+</html>
