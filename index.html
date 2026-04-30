@@ -379,6 +379,68 @@
         }
         .experience-item p { font-size: 0.9rem; color: #666; line-height: 1.6; }
 
+        /* ===================== CADEAUX ===================== */
+        .cadeaux { background: var(--pale-pink); }
+
+        .cadeaux-bloc { margin-top: 3rem; }
+        .cadeaux-bloc:first-of-type { margin-top: 2.5rem; }
+
+        .bloc-tag {
+            display: inline-block; padding: 0.4rem 1.4rem; border-radius: 50px;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .bloc-tag.cavalier { background: var(--navy); color: var(--white); }
+        .bloc-tag.tous { background: var(--coral); color: var(--white); }
+
+        .cadeaux-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 1rem;
+        }
+
+        .cadeau-card {
+            background: var(--white); border-radius: 12px; padding: 1.4rem 1rem;
+            text-align: center; border-bottom: 3px solid transparent;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            box-shadow: 0 2px 12px rgba(0,43,100,0.05);
+        }
+        .cadeau-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,43,100,0.1);
+            border-bottom-color: var(--coral);
+        }
+        .cadeau-card.mystery {
+            background: var(--navy); border: 2px dashed rgba(255,255,255,0.15);
+            border-bottom: 3px solid var(--coral);
+        }
+        .cadeau-card.mystery .cadeau-label { color: rgba(255,255,255,0.9); }
+        .cadeau-card.mystery .cadeau-sub { color: rgba(255,255,255,0.4); }
+        .cadeau-card.mystery .cadeau-icon { color: var(--coral); font-weight: 800; font-family: var(--font-title); }
+        .cadeau-card.star { border: 2px solid var(--coral); }
+
+        .cadeau-icon { font-size: 1.8rem; margin-bottom: 0.7rem; line-height: 1; }
+        .cadeau-label {
+            font-family: var(--font-title); font-size: 0.82rem; font-weight: 700;
+            color: var(--navy); margin-bottom: 0.3rem; line-height: 1.3;
+        }
+        .cadeau-sub { font-size: 0.72rem; color: #999; line-height: 1.4; }
+
+        .cadeaux-footer {
+            margin-top: 3rem; text-align: center; padding: 2rem 1.5rem;
+            background: var(--navy); border-radius: 12px;
+        }
+        .cadeaux-footer p { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.75); font-weight: 300; }
+        .cadeaux-footer strong { color: var(--white); font-weight: 700; }
+
+        @media (max-width: 768px) {
+            .cadeaux-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .cadeaux-grid { gap: 0.7rem; }
+            .cadeau-card { padding: 1rem 0.7rem; }
+            .cadeau-icon { font-size: 1.5rem; }
+            .cadeau-label { font-size: 0.78rem; }
+        }
+
         /* ===================== MINI-JEU ===================== */
         .game-section {
             background: var(--navy); padding: 4rem 2rem; text-align: center;
@@ -549,6 +611,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#histoire">Notre histoire</a></li>
             <li><a href="#programme">Programme</a></li>
+            <li><a href="#cadeaux">Les lots</a></li>
             <li><a href="#minijeu">Le jeu</a></li>
             <li><a href="#infos">Infos pratiques</a></li>
             <li><a href="#" class="nav-cta" id="navCtaBtn">S'inscrire</a></li>
@@ -799,7 +862,7 @@
             </div>
 
             <div class="programme-extras">
-                <p><span>+ Initiation équestre</span> • <span>Cadeaux</span> • <span>Bouquet aux dames</span></p>
+                <p><span>+ Initiation équestre</span> • <a href="#cadeaux" style="color: var(--coral); font-weight: 600; text-decoration: none;">Nombreux cadeaux</a> • <span>Bouquet aux dames</span></p>
             </div>
 
             <div style="text-align: center; margin-top: 1.5rem; padding: 1.2rem; background: var(--pale-pink); border-radius: 10px; border-left: 3px solid var(--coral);">
@@ -839,8 +902,121 @@
                 <div class="experience-item">
                     <div class="exp-icon">🐴</div>
                     <h3>Initiation</h3>
-                    <p>Vos proches découvrent l'équitation pendant que vous montez. Cadeaux à gagner. Bouquet aux dames.</p>
+                    <p>Vos proches découvrent l'équitation pendant que vous montez. <a href="#cadeaux" style="color: var(--coral); font-weight: 600;">Nombreux cadeaux à gagner.</a> Bouquet aux dames.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CADEAUX ========== -->
+    <section class="section cadeaux" id="cadeaux">
+        <div class="section-inner fade-in">
+            <p class="section-label">Les lots</p>
+            <h2 class="section-title">Il n'y a pas que les podiums qui récompensent.</h2>
+            <p class="section-text">Des cadeaux à gagner pour les cavaliers — mais pas que. On a pensé à tout le monde. Ce qu'on peut déjà vous dire : la liste est longue. Pour le reste… venez découvrir.</p>
+
+            <!-- Pour les cavaliers -->
+            <div class="cadeaux-bloc">
+                <span class="bloc-tag cavalier">Pour les cavaliers</span>
+                <div class="cadeaux-grid">
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🏇</div>
+                        <div class="cadeau-label">Bons PADD</div>
+                        <div class="cadeau-sub">À dépenser chez votre équipementier</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🟦</div>
+                        <div class="cadeau-label">Tapis PADD</div>
+                        <div class="cadeau-sub">Pour habiller votre monture</div>
+                    </div>
+                    <div class="cadeau-card star">
+                        <div class="cadeau-icon">🏆</div>
+                        <div class="cadeau-label">Engagement Deep Jumping</div>
+                        <div class="cadeau-sub">Bon pour participer à un concours</div>
+                    </div>
+                    <div class="cadeau-card star">
+                        <div class="cadeau-icon">🎟️</div>
+                        <div class="cadeau-label">Places Equiseine</div>
+                        <div class="cadeau-sub">4 jours au salon équestre</div>
+                    </div>
+                    <div class="cadeau-card star">
+                        <div class="cadeau-icon">🍽️</div>
+                        <div class="cadeau-label">Table pour 2 — Equiseine</div>
+                        <div class="cadeau-sub">Déjeuner VIP le jeudi du concours</div>
+                    </div>
+                    <div class="cadeau-card mystery">
+                        <div class="cadeau-icon">?</div>
+                        <div class="cadeau-label">Surprises cavaliers</div>
+                        <div class="cadeau-sub">On garde ça pour le jour J</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pour tous -->
+            <div class="cadeaux-bloc">
+                <span class="bloc-tag tous">Pour tout le monde</span>
+                <div class="cadeaux-grid">
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">✂️</div>
+                        <div class="cadeau-label">Bon coiffure</div>
+                        <div class="cadeau-sub">Jusqu'à 110€ chez Aurélia Coiffure</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">📸</div>
+                        <div class="cadeau-label">Photo de Yann Quéniart</div>
+                        <div class="cadeau-sub">Un tirage signé du photographe partenaire</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🧺</div>
+                        <div class="cadeau-label">Panier gourmand</div>
+                        <div class="cadeau-sub">Entre 30 et 50€ de produits locaux</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🍾</div>
+                        <div class="cadeau-label">Bouteilles</div>
+                        <div class="cadeau-sub">Pour fêter ça comme il se doit</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🚗</div>
+                        <div class="cadeau-label">Tour en 2CV</div>
+                        <div class="cadeau-sub">Une balade normande à l'ancienne</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🌸</div>
+                        <div class="cadeau-label">Bon fleuriste</div>
+                        <div class="cadeau-sub">Pour rentrer les bras chargés</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🎁</div>
+                        <div class="cadeau-label">Bons goodies</div>
+                        <div class="cadeau-sub">De 5 à 100€ de surprises</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🌿</div>
+                        <div class="cadeau-label">Place Biotropica</div>
+                        <div class="cadeau-sub">Le parc tropical normand</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">⛳</div>
+                        <div class="cadeau-label">Practice golf</div>
+                        <div class="cadeau-sub">Bon pour une session sur le green</div>
+                    </div>
+                    <div class="cadeau-card">
+                        <div class="cadeau-icon">🎰</div>
+                        <div class="cadeau-label">Jeux à gratter</div>
+                        <div class="cadeau-sub">Peut-être votre jour de chance ?</div>
+                    </div>
+                    <div class="cadeau-card mystery">
+                        <div class="cadeau-icon">?</div>
+                        <div class="cadeau-label">Et encore…</div>
+                        <div class="cadeau-sub">La liste est plus longue que ça</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cadeaux-footer">
+                <p>Des lots tirés au sort. Des lots aux podiums. Des lots pour tout le monde.<br>
+                <strong>On a prévu large. Venez.</strong></p>
             </div>
         </div>
     </section>
